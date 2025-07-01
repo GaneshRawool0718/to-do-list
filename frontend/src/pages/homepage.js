@@ -25,7 +25,7 @@ const Homepage = () => {
     return (
         <div style={{ maxWidth: 400, margin: "2rem auto", padding: 20 }}>
             <h2>To Do List</h2>
-            <div style={{ display: "flex", marginBottom: 16 }}>
+            <div style={{ display: "flex", marginBottom: 20 }}>
                 <input
                     type="text"
                     value={input}
