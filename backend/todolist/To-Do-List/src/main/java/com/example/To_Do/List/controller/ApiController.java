@@ -8,6 +8,7 @@ import com.example.To_Do.List.repository.TaskRepository;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000") // Change to your frontend URL
 @RestController
 @RequestMapping("/api/tasks")
 public class ApiController {
