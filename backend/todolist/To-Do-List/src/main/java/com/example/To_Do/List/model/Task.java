@@ -11,6 +11,9 @@ import jakarta.persistence.Table;
 @Table(name = "task")
 
 public class Task {
+    // Represents a task in the to-do list application
+    // This class is an entity that maps to the "task" table in the database
+    // It contains fields for the task ID, title, and description
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
