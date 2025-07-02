@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Integer> {
+    // This interface extends JpaRepository to provide CRUD operations for Task entities
+    // The Task entity is identified by an Integer ID
+    // No additional methods are defined here, as JpaRepository provides standard methods like save, findAll, findById, deleteById
 }
