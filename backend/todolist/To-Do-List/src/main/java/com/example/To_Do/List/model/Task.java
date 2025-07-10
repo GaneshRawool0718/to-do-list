@@ -1,19 +1,14 @@
 package com.example.To_Do.List.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
+import lombok.Data;
+import java.util.Date;
 
 @Entity
 @Table(name = "task")
-
+@Data
 public class Task {
-    // Represents a task in the to-do list application
-    // This class is an entity that maps to the "task" table in the database
-    // It contains fields for the task ID, title, and description
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -24,29 +19,16 @@ public class Task {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    // Getters and Setters
-    public int getId() {
-        return id;
-    }
+    @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdDate;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    @Column
+    @Temporal(TemporalType.DATE)
+    private Date dueDate;
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    @JsonIgnoreProperties("tasks") // prevents circular reference
+    private User user;
 }
